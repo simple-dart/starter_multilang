@@ -12,9 +12,6 @@ import 'package:simple_dart_ui_core/simple_dart_ui_core.dart';
 import 'package:simple_dart_view_controller/simple_dart_view_controller.dart';
 
 import '../simple_dart_starter_multilang.dart';
-import 'nav_bar.dart';
-import 'path_bar.dart';
-import 'translations.dart';
 
 class MainWindow extends PanelComponent {
   Panel display = Panel()
