@@ -32,8 +32,8 @@ class MainWindow extends PanelComponent {
     ..vAlign = Align.center;
   NavBar navBar = NavBar()..width = '200px';
   PathBar pathBar = PathBar()..height = '40px';
-  SelectField langSelect = SelectField();
-  MultilangSelectField themeSelect = MultilangSelectField();
+  SelectField<String> langSelect = SelectField<String>();
+  MultilangSelectField<String> themeSelect = MultilangSelectField<String>();
   MultilangCheckbox monospaceCheckbox = MultilangCheckbox();
 
   MainWindow() : super('MainWindow') {
