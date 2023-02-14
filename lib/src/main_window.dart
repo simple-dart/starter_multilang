@@ -122,7 +122,7 @@ class MainWindow extends PanelComponent {
 @override
 String showError(Object errObj) {
   final errText = convertError(errObj);
-  modalController.showComponentModal(MultilangLabel()..langKey = errText);
+  modalController.showModal(MultilangLabel()..langKey = errText);
   return errText;
 }
 
@@ -132,7 +132,7 @@ void showFatalError(Object errObj) {
   modalController.onClick.listen((event) {
     window.location.assign('/');
   });
-  modalController.showComponentModal(MultilangLabel()..langKey = errText);
+  modalController.showModal(MultilangLabel()..langKey = errText);
   throw Exception(errObj);
 }
 
