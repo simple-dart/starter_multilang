@@ -1,4 +1,4 @@
-import 'package:simple_dart_label/simple_dart_label.dart';
+import 'package:simple_dart_multilang_label/simple_dart_multilang_label.dart';
 import 'package:simple_dart_ui_core/simple_dart_ui_core.dart';
 import 'package:simple_dart_view_controller/simple_dart_view_controller.dart';
 
@@ -7,7 +7,7 @@ import '../simple_dart_starter_multilang.dart';
 typedef CreatePathSeparatorComponent = Component Function();
 
 class PathBar extends PanelComponent {
-  CreatePathSeparatorComponent createPathSeparatorComponent = () => Label()
+  CreatePathSeparatorComponent createPathSeparatorComponent = () => MultilangLabel()
     ..caption = '>'
     ..width = '15px'
     ..hAlign = Align.center;

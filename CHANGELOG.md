@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Add ThemeDropdown and LangDropdown widgets
+
 ## 0.0.4
 
 - Update modal_controller to version 0.0.2
