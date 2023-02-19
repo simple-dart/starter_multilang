@@ -2,6 +2,7 @@ import 'package:simple_dart_multilang_controller/simple_dart_multilang_controlle
 
 const String lkLanguage = '^Language';
 const String lkMonospace = '^Monospace';
+const String lkSelectTheme = '^lkSelectTheme';
 const String lkTheme = '^Theme';
 const String lkDefault = '^Default';
 const String lkLight = '^Light';
@@ -35,6 +36,19 @@ void loadMultilangThemeSelectTranslations() {
       PL: 'Monospace',
       SV: 'Monospace',
       TR: 'Monospace',
+    },
+    lkSelectTheme: {
+      EN: 'Select Theme',
+      ES: 'Seleccionar tema',
+      PT: 'Selecionar tema',
+      RU: 'Выбрать тему',
+      FR: 'Sélectionner le thème',
+      DE: 'Thema auswählen',
+      IT: 'Seleziona tema',
+      NL: 'Selecteer thema',
+      PL: 'Wybierz motyw',
+      SV: 'Välj tema',
+      TR: 'Tema seç',
     },
     lkTheme: {
       EN: 'Theme',

@@ -1,12 +1,9 @@
 import 'dart:html';
 
 import 'package:simple_dart_modal_controller/simple_dart_modal_controller.dart';
-import 'package:simple_dart_multilang_checkbox/simple_dart_multilang_checkbox.dart';
 import 'package:simple_dart_multilang_controller/simple_dart_multilang_controller.dart';
 import 'package:simple_dart_multilang_label/simple_dart_multilang_label.dart';
 import 'package:simple_dart_multilang_link/simple_dart_multilang_link.dart';
-import 'package:simple_dart_multilang_select_field/simple_dart_multilang_select_field.dart';
-import 'package:simple_dart_select_field/simple_dart_select_field.dart';
 import 'package:simple_dart_theme_controller/simple_dart_theme_controller.dart';
 import 'package:simple_dart_ui_core/simple_dart_ui_core.dart';
 import 'package:simple_dart_view_controller/simple_dart_view_controller.dart';
@@ -32,9 +29,8 @@ class MainWindow extends PanelComponent {
     ..vAlign = Align.center;
   NavBar navBar = NavBar()..width = '200px';
   PathBar pathBar = PathBar()..height = '40px';
-  SelectField<String> langSelect = SelectField<String>();
-  MultilangSelectField<String> themeSelect = MultilangSelectField<String>();
-  MultilangCheckbox monospaceCheckbox = MultilangCheckbox();
+  LangDropdown langDropdown = LangDropdown();
+  ThemeDropdown themeDropdown = ThemeDropdown();
 
   MainWindow() : super('MainWindow') {
     fullSize();
@@ -64,13 +60,6 @@ class MainWindow extends PanelComponent {
         pathBar.refresh(currentView);
       }
     });
-    loadMultilangThemeSelectTranslations();
-    langSelect
-      ..initOptions(multilangController.languages)
-      ..value = [multilangController.lang];
-    langSelect.onValueChange.listen((valueChangeEvent) {
-      multilangController.lang = valueChangeEvent.newValue.first;
-    });
     multilangController.onLangChange.listen((langChangeEvent) {
       navBar.reRender();
       pathBar.reRender();
@@ -81,12 +70,6 @@ class MainWindow extends PanelComponent {
       }
     });
 
-    themeSelect
-      ..initOptions(themeController.themeList.map(multilangController.addPrefix).toList())
-      ..value = [multilangController.addPrefix(themeController.theme)];
-    themeSelect.onValueChange.listen((valueChangeEvent) {
-      themeController.theme = multilangController.removePrefix(valueChangeEvent.newValue.first);
-    });
     themeController.onThemeChange.listen((themeChangeEvent) {
       navBar.reRender();
       pathBar.reRender();
@@ -96,12 +79,6 @@ class MainWindow extends PanelComponent {
         }
       }
     });
-    monospaceCheckbox
-      ..langKey = lkMonospace
-      ..value = themeController.monoSpaceFont
-      ..onValueChange.listen((valueChangeEvent) {
-        themeController.monoSpaceFont = valueChangeEvent.newValue;
-      });
     themeController.onMonoSpaceFontChange.listen((monoSpaceFontChangeEvent) {
       navBar.reRender();
       pathBar.reRender();
@@ -111,7 +88,8 @@ class MainWindow extends PanelComponent {
         }
       }
     });
-
+    themeDropdown.refreshDisplay();
+    langDropdown.refreshDisplay();
     homeLink
       ..langKey = viewController.homeView.caption
       ..href = '#${viewController.homeView.id}';
